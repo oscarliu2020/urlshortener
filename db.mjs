@@ -5,7 +5,7 @@ const DBPATH = process.env.DBPATH;
 const pool=new pg.Pool({
     connectionString:DBPATH,
 });
-const schema=`CREATE TABLE url (
+const schema=`CREATE TABLE IF NOT EXISTS url (
     uuid UUID NOT NULL,
     nanoid TEXT NOT NULL,
     url TEXT NOT NULL,
