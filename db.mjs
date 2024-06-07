@@ -39,26 +39,13 @@ async function get(nanoid){
         text:'SELECT * FROM url WHERE nanoid=$1',
         values:[nanoid]
     }
-    let res;
-    try {
-        res= await pool.query(query);
-    }catch (err) {
-        console.log(err);
-    }
-    return res;
+    return res
 }
 async function list(){
     const query={
         text:'SELECT * FROM url',
     };
-    let res;
-    try {
-        res= await pool.query(query);
-    }
-    catch (err) {
-        console.log(err);
-    }
-    return res.fields;
+    return pool.query(query);
 }
 // export
 export{insert,get,list};
