@@ -6,13 +6,13 @@ const app=express();
 const DBPATH=process.env.DBPATH;
 
 app.use(express.json());
-app.post('/api/shorturl/',(req,res)=>{
+app.post('/api/shorturl',(req,res)=>{
     const url=req.body.url;
     if(!url){
         res.status(400).send('URL is required');
         return;
     }
-    const shorturl=`${req.protocol}://${req.get('host')}/${nanoid(10)}`;
+    const shorturl=`${req.protocol}://${req.get('host')}/r/${nanoid(10)}`;
     const shortid=nanoid(10);
     if (!DBPATH) {
         console.log("test environment");
@@ -32,6 +32,17 @@ app.get('/r/:shortid',(req,res)=>{
     const shortid=req.params.shortid;
     if (!DBPATH) {
         console.log(`ShortID: ${shortid}`);
+    } else {
+        get(shortid).then((result)=>{
+            if (result.rows.length>0) {
+                res.redirect(result.rows[0].url);
+                return;
+            }
+            res.status(404).send('Not found');
+        }).catch((err)=>{
+            console.log(err);
+            res.status(500).send('Internal server error');
+        });
     }
     res.status(404).send('Not found');
 });
