@@ -12,8 +12,8 @@ app.post('/api/shorturl',(req,res)=>{
         res.status(400).send('URL is required');
         return;
     }
-    const shorturl=`${req.protocol}://${req.get('host')}/r/${nanoid(10)}`;
     const shortid=nanoid(10);
+    const shorturl=`${req.protocol}://${req.get('host')}/r/${shortid}`;
     if (!DBPATH) {
         console.log("test environment");
         console.log(`URL: ${url} ShortURL: ${shorturl}`);
