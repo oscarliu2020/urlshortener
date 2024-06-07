@@ -44,7 +44,7 @@ app.get('/r/:shortid',(req,res)=>{
             res.status(500).send('Internal server error');
         });
     }
-    res.status(404).send('Not found');
+    // res.status(404).send('Not found');
 });
 app.get('/api/list',(req,res)=>{
     if (!DBPATH) {
