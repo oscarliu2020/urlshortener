@@ -59,7 +59,7 @@ app.get('/api/list',(req,res)=>{
                 shorturl:`${req.protocol}://${req.get('host')}/r/${row.nanoid}`,
             };
         });
-        res.json(datas);
+        res.json(data);
     }).catch((err)=>{
         console.log(err);
         res.status(500).send('Internal server error');
