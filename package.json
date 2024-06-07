@@ -11,6 +11,8 @@
   "main": "app.js",
   "repository": "git@github.com:oscarliu2020/urlshortener.git",
   "author": "00",
-  "license": "MIT"
-  
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  }
 }
