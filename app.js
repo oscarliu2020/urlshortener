@@ -53,7 +53,13 @@ app.get('/api/list',(req,res)=>{
         return;
     }
     list().then((result)=>{
-        res.json(result.rows);
+        const data=result.rows.map((row)=>{
+            return {
+                url:row.url,
+                shorturl:`${req.protocol}://${req.get('host')}/r/${row.nanoid}`,
+            };
+        });
+        res.json(datas);
     }).catch((err)=>{
         console.log(err);
         res.status(500).send('Internal server error');

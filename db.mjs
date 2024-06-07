@@ -25,21 +25,17 @@ async function insert(url,nanoid){
         text:'INSERT INTO url (uuid,nanoid,url) VALUES ($1,$2,$3)',
         values:[newuuid,nanoid,url],
     };
-    let res;
-    try {
 
-        res= await pool.query(query);
-    } catch (err) {
-        console.log(err);
-    }
-    return res;
+
+    return  pool.query(query);
+    
 }
 async function get(nanoid){
     const query={
         text:'SELECT * FROM url WHERE nanoid=$1',
         values:[nanoid]
     }
-    return res
+    return pool.query(query);
 }
 async function list(){
     const query={
