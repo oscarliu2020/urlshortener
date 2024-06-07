@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "nanoid": "^5.0.7",
+    "pg": "^8.12.0",
+    "uuid": "^9.0.1"
+  },
+  "type": "module",
+  "name": "urlshortener",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "git@github.com:oscarliu2020/urlshortener.git",
+  "author": "00",
+  "license": "MIT"
+  
+}
